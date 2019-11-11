@@ -1,0 +1,22 @@
+<h1> Welcome <%= @user.full_name %>!</h1><br />
+
+<h3>Cash to Invest: $<%= @user.balance %></h3><br />
+<hr>
+
+<h3>Portfolios:</h3>
+<ul>
+<% @user.portfolios.each do |portfolio| %>
+   <li><%= portfolio.title %></li>
+   <li><%= button_to "View Portfolio", portfolio_path(portfolio) %></li>
+<% end %>
+</ul>
+
+<!-- 
+we are want to show -
+1. a button to create a new portfolio 
+2. all of the portfolios created for this user with a button to view each portfolio 
+3. a field to add or subtract from your balance
+4. show username 
+5. cabbage logo
+
+-->
