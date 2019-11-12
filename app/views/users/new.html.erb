@@ -1,7 +1,8 @@
-<h1>Sign Up</h1>
+<h1>Sign Up for Cabbage 🥬</h1><br />
 
-<%= form_for @user do |f| %>
-    First Name: <%= f.text_field :first_name %><br />
+<%= form_for @user do |f| %> 
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br />
     
     <%= f.label :last_name %>
     <%= f.text_field :last_name %><br />
@@ -10,8 +11,8 @@
     <%= f.text_field :username %><br />
 
     <%= f.label :password %>
-    <%= f.text_field :password %><br />
+    <%= f.password_field :password %><br />
 
-    <%= f.submit %>
+    <%= f.submit "Submit" %>
     
 <% end %>

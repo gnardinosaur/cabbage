@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        #byebug
         @user = User.create(user_params)
         @user.balance = 0
         @user.save 
@@ -19,9 +18,6 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
     end
-
-    # def log_in    
-    # end
 
     private 
     
