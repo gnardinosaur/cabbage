@@ -11,7 +11,7 @@
 <h2>Ca$h Invested: $ </h2> <!-- all of the portfolio.cash added up -->
 <ul>
 <% @user.portfolios.each do |portfolio| %>
-   <li>Portfolio Name: <%= link_to portfolio.title, portfolio_path(portfolio) %></li>
+   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %></li>
 <% end %>
 </ul>
 
