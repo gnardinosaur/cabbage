@@ -14,6 +14,14 @@ class PortfoliosController < ApplicationController
         @portfolio = Portfolio.find(params[:id])
     end
 
+    def update
+        @portfolio = Portfolio.find(params[:id])
+        # @portfolio.cash = by amount form field
+        # @portfolio.save
+
+        redirect_to portfolio_path(@portfolio)
+    end
+
 
     private
 
