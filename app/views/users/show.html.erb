@@ -1,22 +1,19 @@
+<!-- need styling cabbage logo -->
+
 <h1> Welcome <%= @user.full_name %>!</h1><br />
 
+<h3>Total Balance - Ca$h + Investments</h3> <!-- add up all portfolio balances + unvested cash -->
 <h3>Cash to Invest: $<%= @user.balance %></h3><br />
 <hr>
+<!-- add a button/field to add or subtract from your balance -->
 
 <h3>Portfolios:</h3>
+<h2>Ca$h Invested: $ </h2> <!-- all of the portfolio.cash added up -->
 <ul>
 <% @user.portfolios.each do |portfolio| %>
-   <li><%= portfolio.title %></li>
-   <li><%= button_to "View Portfolio", portfolio_path(portfolio) %></li>
+   <li>Portfolio Name: <%= link_to portfolio.title, portfolio_path(portfolio) %></li>
 <% end %>
 </ul>
 
-<!-- 
-we are want to show -
-1. a button to create a new portfolio 
-2. all of the portfolios created for this user with a button to view each portfolio 
-3. a field to add or subtract from your balance
-4. show username 
-5. cabbage logo
+<%= link_to("Create A New Portfolio", new_portfolio_path) %> <!-- need to css style as a button -->
 
--->
