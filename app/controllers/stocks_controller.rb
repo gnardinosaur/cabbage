@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
 
-    def show 
-        @stock = Stock.find(params[:id])
+    def index	   
+        @stocks = Stock.all_stocks
     end
 
 end

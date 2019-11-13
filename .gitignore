@@ -34,3 +34,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+#ignore db.yml file so we don't have to change username: each time
+/config/database.yml
