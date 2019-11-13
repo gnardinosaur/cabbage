@@ -16,8 +16,14 @@ class PortfoliosController < ApplicationController
 
     def update
         @portfolio = Portfolio.find(params[:id])
-        # @portfolio.cash = by amount form field
-        # @portfolio.save
+
+        if params[:add_cash]                        #add amount to portfolio cash balance
+            @portfolio.cash += params[:add_cash].to_i
+            @portfolio.save
+        elsif params[:withdraw_cash]                #remove amount from portfolio cash balance
+            @portfolio.cash -= params[:withdraw_cash].to_i
+            @portfolio.save
+        end
 
         redirect_to portfolio_path(@portfolio)
     end
