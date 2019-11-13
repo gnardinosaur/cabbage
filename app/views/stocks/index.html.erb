@@ -6,10 +6,11 @@
    <span>Symbol: <%= stock["symbol"] %></span> | <span id ="price">Price: $<%= stock["price"] %></span> <!-- add company name to this line if we have time -->
    <!--  Get all info needed for params -->
       <%=form_tag "/transactions" do %>
-         <input id="stock_id" name="stock[stock_id]" type="hidden" value=<%=i%> />
-         <%=number_field_tag "stock[num_of_shares]", in: 1..1000%>
-         <%=hidden_field_tag 'stock[share_price]', stock["price"]%>
-         <%=submit_tag "Buy"%>
+         <%= number_field_tag "stock[num_of_shares]" %>
+         <%= hidden_field_tag "stock[share_price]", stock["price"] %>
+         <%= hidden_field_tag "stock[portfolio_id]", @portfolio_id %>
+         <%= hidden_field_tag "stock[symbol]", stock["symbol"] %>
+         <%= submit_tag "Buy" %>
       <%end%>
       <br />
    <%end%>

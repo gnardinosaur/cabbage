@@ -14,3 +14,6 @@ end
     Transaction.create(portfolio_id: rand(1..10), stock_id: rand(1..10), share_price: rand(1..100), num_of_shares: rand(5..50))
 end
 
+# [array of 30 tickers].each do |ticker|
+#     Stock.create(symbol: ticker)
+# end

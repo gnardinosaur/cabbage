@@ -65,5 +65,5 @@
     <% end %>
 </table><br />
 
-<%= link_to "Buy Stocks for this Portfolio", stocks_path, portfolio_id: @portfolio.id %>
+<%= link_to "Buy Stocks for this Portfolio", {controller: stocks_path, portfolio_id: @portfolio.id} %> <!-- passing params[:portfolio_id] to Stock controller -->
 
