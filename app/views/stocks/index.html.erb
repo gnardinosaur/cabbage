@@ -3,5 +3,20 @@
     2. company name
     3. current stock price (from API)
     4. a "add to portfolio" button/link_to next to each stock which will direct to a Transaction new view (see Transaction)
-
+ <input id="stock_id" name="stock_id" type="hidden" value=<=i%> />
+   <%=submit_tag "Buy"%>
 -->
+
+
+<ul>
+   <%@stocks["companiesPriceList"].each_with_index do |stock,i| %>
+   <span>Comany: <%=stock["symbol"]%></span> <span id ="price">Price: <%= stock["price"]%></span>
+   <%=form_tag "/transactions" do %>
+    <input id="stock_id" name="stock[stock_id]" type="hidden" value=<%=i%> />
+   <%=submit_tag "Buy"%>
+   <%end%>
+   <br>
+   <%end%>
+   </ul>
+   
+
