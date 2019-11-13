@@ -1,8 +1,9 @@
 
+<h1>Stocks</h1><br />
 <ul>
-   <%@stocks["companiesPriceList"].each_with_index do |stock,i| %> <!--  call API STOCKS -->
+   <%= @stocks["companiesPriceList"].each_with_index do |stock,i| %> <!--  call API STOCKS -->
    
-   <span>Comany: <%=stock["symbol"]%></span> <span id ="price">Price: <%= stock["price"]%></span>
+   <span>Company: <%=stock["symbol"]%></span> <span id ="price">Price: <%= stock["price"]%></span>
    <!--  Get all info needed for params -->
    <%=form_tag "/transactions" do %>
      <input id="stock_id" name="stock[stock_id]" type="hidden" value=<%=i%> />
