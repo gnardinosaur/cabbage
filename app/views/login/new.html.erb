@@ -12,10 +12,14 @@
 <div class="welcome">
 <h1>Welcome to Cabbage</h1>
 
-<%= form_tag do %>                      
-    <h3>Username: <%= text_field(:user, :username) %></h3>
+<% if flash[:message] %>
+    <h2><%= flash[:message] %></h2>
+<% end %>
+
+<%= form_tag login_path do %>                      
+    <h3>Username: <%= text_field_tag(:username) %></h3>
     
-    <h3>Password: <%= password_field(:user, :password) %></h3>
+    <h3>Password: <%= password_field_tag(:password) %></h3>
     
     <%= submit_tag "Log In" %>
 <% end %>

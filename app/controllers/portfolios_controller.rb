@@ -6,6 +6,8 @@ class PortfoliosController < ApplicationController
 
     def create 
         @portfolio = Portfolio.create(portfolio_params)
+        @portfolio.user_id = @logged_in_user.id
+        @portfolio.save
 
         redirect_to portfolio_path(@portfolio)
     end 
@@ -32,7 +34,7 @@ class PortfoliosController < ApplicationController
     private
 
     def portfolio_params
-        params.require(:portfolio).permit(:title, :cash, :user_id)
+        params.require(:portfolio).permit(:title, :cash)
     end
 
 end
