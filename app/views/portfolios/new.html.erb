@@ -1,12 +1,12 @@
 <h1>Create New Portfolio</h1><br />
 
+<!-- add user.name which is a link back to user -- can replace with bootstrap nav bar later -->
+
 <%= form_for @portfolio do |f| %> 
 
     <h4>Portfolio Name: <%= f.text_field(:title) %></h4>
     
     <h4>Ca$h to Trade: <%= f.number_field(:cash) %></h4>
-
-    <!-- <h4>User: <%= f.collection_select(:user_id, User.all, :id, :username) %></h4> how to not make this a collection_select so the portfolio knows who the user is - [:session]? -->
 
     <%= f.submit "Create" %>
     
