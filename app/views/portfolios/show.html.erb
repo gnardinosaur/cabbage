@@ -1,12 +1,68 @@
-<!-- add css styling -->
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 45px;
+            width: 700px;
+        }
 
-<h1><%= @portfolio.user.full_name %></h1><br />
+        th {
+            height: 50px;
+            text-align: center;
+        }
 
-<h2><%= @portfolio.title %></h2><br />
+        td {
+            text-align: center;
+        }
 
-<!-- things to add to page: 
-    1. $portfolio.cash field 
-    2. table of stocks with columns on whiteboard
-    3. button/link to add stocks to this portfolio
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<h1>Portfolio Title: <%= @portfolio.title %></h1><br />
+
+<h3>Portfolio Owner: <%= @portfolio.user.full_name %></h3><br /> <!-- add to top right of page with css -->
+
+<h3>Available Ca$h to Invest: $<%= @portfolio.cash %> </h3><br /> 
+
+<!-- buttons to inc/decrement @portfolio.cash attribute -->
+<%= form_tag portfolio_path, method: "patch" do %>
+    <%= number_field_tag "add_cash" %>
+    <%= submit_tag "Add Cash" %><br />
+<% end %>
+
+<%= form_tag portfolio_path, method: "patch" do %>
+    <%= number_field_tag "withdraw_cash" %>
+    <%= submit_tag "Withdraw Cash" %><br />
+<% end %>
+<!-- 
+@portfolio.increment!(:cash, amount from field) 
+@portfolio.decrement!(:cash, amount from field)
 -->
+
+<h3>Stocks In My Portfolio:</h3>
+<table class="table">
+<tr>    
+    <th>Company Name</th>
+    <th>Symbol</th>
+    <th>Current Price</th>
+    <th># of Shares Owned</th>
+    <th>Price Paid</th>
+</tr>    
+<tr>
+    <% @portfolio.transactions.each do |transaction| %>
+    <td><%= transaction.stock.company_name %></td>
+    <td><%= transaction.stock.symbol %></td>
+    <td>$<%= transaction.stock.price %></td>
+    <td><%= transaction.num_of_shares %></td>
+    <td>$<%= transaction.share_price %></td>
+    </tr>
+    <% end %>
+</table><br />
+
+<%= link_to "Buy Stocks", stocks_path %>
+
+
 

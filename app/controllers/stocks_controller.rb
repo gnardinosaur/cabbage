@@ -1,9 +1,11 @@
 class StocksController < ApplicationController
-
-def index
-    # byebug
+  
+  def index
     @stocks = Stock.all_stocks
-    # byebug
-end
+  end
+  
+  def show 
+    @stock = Stock.find(params[:id])
+  end
 
 end
