@@ -4,8 +4,10 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        byebug
         @transaction= Transaction.create(transaction_params)
+        @logged_in_user.portfolios
+
+
         redirect_to portfolio_path(@transaction.portfolio_id)
     end
 
