@@ -8,13 +8,13 @@
 
 <!-- these buttons inc/decrement @user.balance attribute -->
 <%= form_tag user_path, method: "patch" do %>
-    <%= number_field_tag "add_cash" %>
-    <%= submit_tag "Add Cash" %><br />
+    <%= number_field_tag "add_cash", "", placeholder: "0", class: "input" %>
+    <%= submit_tag "Add Cash", class: "btn btn-success"  %><br />
 <% end %>
 
 <%= form_tag user_path, method: "patch" do %>
-    <%= number_field_tag "withdraw_cash" %>
-    <%= submit_tag "Withdraw Cash" %><br />
+    <%= number_field_tag "withdraw_cash", "", placeholder: "0", class: "input" %>
+    <%= submit_tag "Withdraw Cash", class: "btn btn-danger" %><br />
 <% end %>
 <hr>
 
@@ -34,6 +34,6 @@
 </div>
 
 <div class="sign-out-btn">
-    <%= button_to("Log Out", root_path, method: "delete") %>
+    <%= button_to("Log Out", root_path, method: "delete", class: "btn btn-secondary") %>
 </div>
 </div>

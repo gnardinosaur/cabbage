@@ -7,9 +7,9 @@
 
 <%= form_for @portfolio do |f| %> 
 
-    <h4>Portfolio Name: <%= f.text_field(:title) %></h4>
+    <h4>Portfolio Name: <%= f.text_field(:title, class: "input") %></h4>
     
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", class: "btn btn-primary" %>
     
 <% end %>
 </div>
