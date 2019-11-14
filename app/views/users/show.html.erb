@@ -1,21 +1,32 @@
-<!-- need styling cabbage logo -->
+<!-- need styling & cabbage logo -->
 
 <h1> Welcome to Cabbage 🥬 <%= @logged_in_user.full_name %>!</h1><br />
 
-<h3>Total Balance - Ca$h + Investments</h3> <!-- add up all portfolio balances + unvested cash -->
-<h3>Cash to Invest: $<%= @logged_in_user.balance %></h3><br />
+<h3>Available Cash to Invest: $<%= @logged_in_user.balance %></h3>
+<h3>Invested in All Portfolios: $<%= @logged_in_user.all_portfolios_balance %></h3>
+<h3>Total Balance: $<%= @logged_in_user.balance + @logged_in_user.all_portfolios_balance%></h3>
 <hr>
-<!-- add a button/field to add or subtract from your balance -->
+
+<!-- these buttons inc/decrement @user.balance attribute -->
+<%= form_tag user_path, method: "patch" do %>
+    <%= number_field_tag "add_cash" %>
+    <%= submit_tag "Add Cash" %><br />
+<% end %>
+
+<%= form_tag user_path, method: "patch" do %>
+    <%= number_field_tag "withdraw_cash" %>
+    <%= submit_tag "Withdraw Cash" %><br />
+<% end %>
+<hr>
 
 <h3>Portfolios:</h3>
-<h2>Ca$h Invested: $ </h2> <!-- all of the portfolio.cash added up -->
+<h2>Ca$h Invested: $<%= @logged_in_user.all_portfolios_balance %></h2>
 <ul>
 <% @logged_in_user.portfolios.each do |portfolio| %>
-   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %></li>
+   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %> | $<%= portfolio.portfolio_balance %></li>
 <% end %>
 </ul>
 
 <%= link_to("Create A New Portfolio", new_portfolio_path) %> <!-- need to css style as a button -->
 
 <%= button_to("Sign Out", root_path, method: "delete") %>
-

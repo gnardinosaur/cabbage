@@ -12,4 +12,13 @@ class Stock < ApplicationRecord
         full_hash	
     end
 
+    def current_price
+        Stock.all_stocks["companiesPriceList"].each do |hash|
+            if hash["symbol"] == self.symbol
+                @current_price = hash["price"]
+            end
+        end
+        @current_price
+    end
+
 end

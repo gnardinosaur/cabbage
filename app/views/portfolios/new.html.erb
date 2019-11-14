@@ -1,13 +1,13 @@
-<h1>Create New Portfolio</h1><br />
+<h1>Create New Portfolio</h1>
 
-<!-- add user.name which is a link back to user -- can replace with bootstrap nav bar later -->
+<h3><%= link_to @logged_in_user.full_name, user_path(@logged_in_user) %></h3> <!-- add nav bar with link back to user or style this link using css -->
+
+<h3>Available Cash to Invest: $ <%= @logged_in_user.balance %></h3>
 
 <%= form_for @portfolio do |f| %> 
 
     <h4>Portfolio Name: <%= f.text_field(:title) %></h4>
     
-    <h4>Ca$h to Trade: <%= f.number_field(:cash) %></h4>
-
     <%= f.submit "Create" %>
     
 <% end %>
