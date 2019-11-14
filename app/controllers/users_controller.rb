@@ -19,6 +19,20 @@ class UsersController < ApplicationController
     def show
     end
 
+    def update
+        @user = User.find(params[:id])
+
+        if params[:add_cash]                        #adds amount to user cash balance
+            @user.balance += params[:add_cash].to_i
+            @user.save
+        elsif params[:withdraw_cash]                #removes amount from user cash balance
+            @user.balance -= params[:withdraw_cash].to_i
+            @user.save
+        end
+
+        redirect_to user_path(@user)
+    end
+
     private 
     
     def user_params

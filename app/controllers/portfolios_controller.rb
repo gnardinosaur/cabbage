@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
         @portfolio = Portfolio.new
     end 
 
-    def create 
+    def create
         @portfolio = Portfolio.create(portfolio_params)
         @portfolio.user_id = @logged_in_user.id
         @portfolio.save
@@ -16,25 +16,10 @@ class PortfoliosController < ApplicationController
         @portfolio = Portfolio.find(params[:id])
     end
 
-    def update
-        @portfolio = Portfolio.find(params[:id])
-
-        if params[:add_cash]                        #add amount to portfolio cash balance
-            @portfolio.cash += params[:add_cash].to_i
-            @portfolio.save
-        elsif params[:withdraw_cash]                #remove amount from portfolio cash balance
-            @portfolio.cash -= params[:withdraw_cash].to_i
-            @portfolio.save
-        end
-
-        redirect_to portfolio_path(@portfolio)
-    end
-
-
     private
 
     def portfolio_params
-        params.require(:portfolio).permit(:title, :cash)
+        params.require(:portfolio).permit(:title)
     end
 
 end

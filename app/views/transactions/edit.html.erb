@@ -1,0 +1,11 @@
+<h1>Sell some <%= @transaction.stock.company_name %></h1>
+<h3>Price Paid Per Share: $<%= @transaction.share_price %></h3>
+<h3>Current Number of Shares: <%= @transaction.num_of_shares %></h3>
+
+
+<%= form_for @transaction do |f| %>
+    <%= f.label :num_of_shares, "Number of Shares to Sell:" %>
+    <%= f.number_field :num_of_shares %><br />
+
+    <%= f.submit "Sell" %>
+<% end %>
