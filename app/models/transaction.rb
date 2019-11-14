@@ -7,21 +7,21 @@ class Transaction < ApplicationRecord
     end
 
     def plus_minus
-        if current_stock_price > total_cost
-            current_stock_price - total_cost
+        if current_value > total_cost
+            current_value - total_cost
         else
-            current_stock_price - total_cost
+            - total_cost + current_value #for some reason this was returning a positive value, so this math turns it negative 
         end
     end
 
-    def current_stock_price                    #gets current stock price from API
-        current_stock_price = 0                                        
+    def current_value                    #gets current stock price from API
+        current_value = 0                                        
         Stock.all_stocks["companiesPriceList"].each do |hash|
             if hash["symbol"] == self.stock.symbol
-                current_stock_price += hash["price"]
+                current_value += hash["price"]
             end
         end
-        current_stock_price * self.num_of_shares
+        current_value * self.num_of_shares
     end 
 
 end

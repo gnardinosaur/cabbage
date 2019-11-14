@@ -1,5 +1,5 @@
 <h1>Stocks for Purchase</h1>
-<h3>Available Cash to Invest: $<%= @logged_in_user.balance %></h3>
+<h3>Available Cash to Invest: <%= number_to_currency(@logged_in_user.balance) %></h3>
 <hr>
 
 <%= link_to @logged_in_user.full_name, user_path(@logged_in_user) %> <!-- link back to user's page -->
@@ -10,7 +10,7 @@
 
 <ul>
    <% @stocks["companiesPriceList"].each_with_index do |stock, i| %>  <!--  call API STOCKS -->
-   
+   <!-- in the future add company name here -->
    <span>Symbol: <%= stock["symbol"] %></span> | <span id ="price">Price: $<%= stock["price"] %></span> <!-- add company name to this line if we have time -->
    <!--  Get all info needed for params -->
       <%= form_tag "/transactions" do %>

@@ -2,9 +2,9 @@
 
 <h1> Welcome to Cabbage 🥬 <%= @logged_in_user.full_name %>!</h1><br />
 
-<h3>Available Cash to Invest: $<%= @logged_in_user.balance %></h3>
-<h3>Invested in All Portfolios: $<%= @logged_in_user.all_portfolios_balance %></h3>
-<h3>Total Balance: $<%= @logged_in_user.balance + @logged_in_user.all_portfolios_balance%></h3>
+<h3>Available Cash to Invest: <%= number_to_currency(@logged_in_user.balance) %></h3>
+<h3>Invested in All Portfolios: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h3>
+<h3>Total Balance: <%= number_to_currency(@logged_in_user.balance + @logged_in_user.all_portfolios_balance) %></h3>
 <hr>
 
 <!-- these buttons inc/decrement @user.balance attribute -->
@@ -20,10 +20,10 @@
 <hr>
 
 <h3>Portfolios:</h3>
-<h2>Ca$h Invested: $<%= @logged_in_user.all_portfolios_balance %></h2>
+<h2>Ca$h Invested: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h2>
 <ul>
 <% @logged_in_user.portfolios.each do |portfolio| %>
-   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %> | $<%= portfolio.portfolio_balance %></li>
+   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %> | <%= number_to_currency(portfolio.portfolio_balance) %></li>
 <% end %>
 </ul>
 

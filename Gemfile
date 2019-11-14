@@ -7,6 +7,8 @@ ruby '2.6.1'
 gem 'rails', '~> 6.0.1'
 # Use postgres as the database for Active Record
 gem 'pg'
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
