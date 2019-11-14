@@ -59,7 +59,7 @@
                     <% else %>
                     - <%= number_to_currency(transaction.plus_minus) %>
                     <% end %></td> 
-            <td><%= button_to "Sell", edit_transaction_path(transaction), method: "get" %></td>
+            <td><%= button_to "Sell", edit_transaction_path(transaction), method: "get", class: "btn btn-danger" %></td>
             </tr>
             <% end %>
     <% end %>
