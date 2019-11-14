@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-
+<div class="main">
 <h1>Portfolio Title: <%= @portfolio.title %></h1>
 <h2>Portfolio Value: <%= number_to_currency(@portfolio.portfolio_balance) %></h2>
 <h2>Portfolio: <% if @portfolio.portfolio_plus_minus > 0  %> <!-- with CSS: if negative number turn text red, if positive turn text green -->
@@ -36,7 +36,7 @@
 
 <!-- table of every stock in the portfolio-->
 <h3>Stocks In My Portfolio:</h3>
-<table class="table">
+<table class="table table-striped">
 <tr>    
     <th>Company Name</th>
     <th>Symbol</th>
@@ -66,4 +66,4 @@
 </table><br />
 
 <%= link_to "Buy Stocks for this Portfolio", {controller: stocks_path, portfolio_id: @portfolio.id} %> <!-- passing params[:portfolio_id] to Stock controller -->
-
+</div>

@@ -10,6 +10,42 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center; 
+    height: 100vh;
+}
+
+.main {
+    height: 100%;
+    padding: 50px;
+    background-color: peachpuff;
+    overflow-y: scroll;
+}
+
+.sign-out-btn {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+}
+
+
+.portfolios-list  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.each-portfolio {
+    border: 1px solid black;
+    height: 100px;
+    width: 150px;
+    align-content: center;
+}
+
