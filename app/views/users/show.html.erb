@@ -1,5 +1,4 @@
-<!-- need styling & cabbage logo -->
-
+<div class="main">
 <h1> Welcome to Cabbage 🥬 <%= @logged_in_user.full_name %>!</h1><br />
 
 <h3>Available Cash to Invest: <%= number_to_currency(@logged_in_user.balance) %></h3>
@@ -19,14 +18,22 @@
 <% end %>
 <hr>
 
-<h3>Portfolios:</h3>
-<h2>Ca$h Invested: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h2>
-<ul>
-<% @logged_in_user.portfolios.each do |portfolio| %>
-   <li>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %> | <%= number_to_currency(portfolio.portfolio_balance) %></li>
-<% end %>
-</ul>
+<div class="portfolio-parent">
+    <h3>Portfolios:</h3>
+    <h2>Ca$h Invested: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h2>
+    
+    <div class="portfolios-list">
+        <% @logged_in_user.portfolios.each do |portfolio| %>
+            <div class="each-portfolio"> 
+                <div>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %></div> <div><%= number_to_currency(portfolio.portfolio_balance) %></div>
+            </div>
+        <% end %>
+    </div>
+    
+    <%= link_to("Create A New Portfolio", new_portfolio_path) %> <!-- need to css style as a button -->
+</div>
 
-<%= link_to("Create A New Portfolio", new_portfolio_path) %> <!-- need to css style as a button -->
-
-<%= button_to("Sign Out", root_path, method: "delete") %>
+<div class="sign-out-button">
+    <%= button_to("Sign Out", root_path, method: "delete") %>
+</div>
+</div>
