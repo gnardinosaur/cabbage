@@ -5,26 +5,32 @@
             color: white; 
         }
         .welcome {
-            margin: 200px 500px;
+            margin: 100px 500px;
+        }
+
+        .input {
+            border-radius: 10px
         }
     </style>
 </head>
-<div class="welcome">
+
+<div class="welcome text-center">
 <h1>Welcome to Cabbage</h1>
 
 <% if flash[:message] %>
     <h2><%= flash[:message] %></h2>
 <% end %>
 
-<%= form_tag login_path do %>                      
-    <h3>Username: <%= text_field_tag(:username) %></h3>
+<%= form_tag login_path do %>            
+    <h3><%= text_field_tag(:username, "", placeholder: "Username", class: "input") %></h3>
     
-    <h3>Password: <%= password_field_tag(:password) %></h3>
-    
-    <%= submit_tag "Log In" %>
+    <h3><%= password_field_tag(:password, "", placeholder: "Password", class: "input") %></h3>
+
+    <%= submit_tag "Log In", class: "input" %>
 <% end %>
+<br />
 
-<h4>or</h4><br />
-
-<%= link_to("Sign Up", new_user_path) %></h3>  
+<div class="btn btn-light">
+    <%= link_to("Sign Up", new_user_path) %></h3>  
+<div>
 </div>
