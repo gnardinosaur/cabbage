@@ -3,7 +3,7 @@
         table {
             border-collapse: collapse;
             border-spacing: 45px;
-            width: 700px; 
+            width: 700px;
         }
 
         th {
@@ -22,16 +22,24 @@
 </head>
 
 <h1>Portfolio Title: <%= @portfolio.title %></h1>
-<h2>Portfolio Value: <%= number_to_currency(@portfolio.portfolio_balance) %></h2>
-<h2>Portfolio: <% if @portfolio.portfolio_plus_minus > 0  %> <!-- with CSS: if negative number turn text red, if positive turn text green -->
-                   + <%= number_to_currency(@portfolio.portfolio_plus_minus) %>
-                   <% else %> 
-                   - <%= number_to_currency(@portfolio.portfolio_plus_minus) %>
-                <% end %></h2>
+
+<h2>Portfolio +/-: $<%= @portfolio.portfolio_plus_minus %></h2> <!-- with CSS: if negative number turn text red, if positive turn text green -->
+
 <h3>Portfolio Owner: <%= link_to @portfolio.user.full_name, user_path(@portfolio.user) %></h3><br /> <!-- add to top right of page with css -->
 <hr>
 
-<h3>Available Ca$h to Invest: <%= number_to_currency(@logged_in_user.balance) %> </h3><br /> 
+<h3>Available Ca$h to Invest: $<%= @portfolio.cash %> </h3><br /> 
+
+<!-- buttons to inc/decrement @portfolio.cash attribute -->
+<%= form_tag portfolio_path, method: "patch" do %>
+    <%= number_field_tag "add_cash" %>
+    <%= submit_tag "Add Cash" %><br />
+<% end %>
+
+<%= form_tag portfolio_path, method: "patch" do %>
+    <%= number_field_tag "withdraw_cash" %>
+    <%= submit_tag "Withdraw Cash" %><br />
+<% end %>
 <hr>
 
 <!-- table of every stock in the portfolio-->
@@ -44,26 +52,18 @@
     <th># of Shares Owned</th>
     <th>Price Paid</th>
     <th>+/-</th>
-    <th>Sell</th>
 </tr>    
 <tr>
     <% @portfolio.transactions.each do |transaction| %>
-        <% if transaction.num_of_shares > 0 %>
-            <td><%= transaction.stock.company_name %></td>
-            <td><%= transaction.stock.symbol %></td>
-            <td><%= number_to_currency(transaction.stock.current_price) %></td>
-            <td><%= transaction.num_of_shares %></td>
-            <td><%= number_to_currency(transaction.share_price) %></td>
-            <td><% if transaction.plus_minus > 0 %>                         <!-- with CSS: if negative number turn text red, if positive turn text green -->
-                    + <%= number_to_currency(transaction.plus_minus) %>
-                    <% else %>
-                    - <%= number_to_currency(transaction.plus_minus) %>
-                    <% end %></td> 
-            <td><%= button_to "Sell", edit_transaction_path(transaction), method: "get" %></td>
-            </tr>
-            <% end %>
+    <td><%= transaction.stock.company_name %></td>
+    <td><%= transaction.stock.symbol %></td>
+    <td>$<%= transaction.stock.price %></td>
+    <td><%= transaction.num_of_shares %></td>
+    <td>$<%= transaction.share_price %></td>
+    <td>$<%= transaction.plus_minus %></td> <!-- with CSS: if negative number turn text red, if positive turn text green -->
+    </tr>
     <% end %>
 </table><br />
 
-<%= link_to "Buy Stocks for this Portfolio", {controller: stocks_path, portfolio_id: @portfolio.id} %> <!-- passing params[:portfolio_id] to Stock controller -->
+<%= link_to "Buy Stocks for this Portfolio", stocks_path, portfolio_id: @portfolio.id %>
 

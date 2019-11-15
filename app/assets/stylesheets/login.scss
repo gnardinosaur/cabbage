@@ -1,16 +1,35 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
-.special {
-    background: cornsilk;
+/**body {
+    margin: 0%;
+    width: 0%;
+    background-color: #f7f7f7;
 }
+.container {
+    margin-top: 4%;
+    width: 360px;
+    height: 600px;
+    border: 2px solid white;
+    background-color: #eae9e9;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    text-align: center;
+    color: white;
+}
+.container #password {
+    margin-top: 18px;
+    color: black;
+}
+.container #username {
+    margin-top: 18px;
+}
+*/ 
+ 
 #login {
 	-webkit-perspective: 1000px;
 	-moz-perspective: 1000px;
 	perspective: 1000px;
 	margin-top:50px;
-    margin-left:30%;
+	margin-left:30%;
 }
 .login {
 	font-family: 'Josefin Sans', sans-serif;
@@ -28,11 +47,7 @@
 }
 
 .login .form-group {
-    margin-bottom:17px;
-    text-align: center;
-}
-.form-group {
-    text-align: center;
+	margin-bottom:17px;
 }
 .login .form-control,
 .login .btn {
@@ -51,15 +66,6 @@
 .forgot {
 	font-size:16px;
 }
-.text-field {
-    position: relative;;
-}
-#firstname {
-    text-align: center;
-}
-#lastname {
-    text-align: center;
-}
 #username {
     text-align: center;
 }
@@ -72,7 +78,6 @@
 .forgot a:hover {
 	color:#1a3263;
 }
-
 
 #inner-wrapper, #contact-us .contact-form, #contact-us .our-address {
     color: #1d1d1d;
@@ -95,8 +100,30 @@
         border-right-style: none;
         border-right-width: medium;
 }
- /*.login .btn {
+ .login .btn {
      color: red !important;
  }
- */
  
+ .myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+    top:1px;
+}

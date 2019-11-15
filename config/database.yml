@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: cabbage_development
   pool: 5
-  username: heatherschechter
+  username: soufianeou
   password:
   timeout: 5000
  

@@ -1,20 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        body { 
-            background-image: url("https://bit.ly/34RXu4C");
-            color: white; 
-        }
-        .welcome {
-            margin: 200px 500px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cabbage</title>
+     <style>
+     
+     body {
+    background: #745c97;
+}
+body {
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+     </style>
 </head>
-<div class="welcome">
+<body>
+<div class="col-md-4 col-md-offset-4" id="login">
+<section id="inner-wrapper" class="login">  
+
+        <% if flash[:message] %>
+        <h2><%= flash[:message] %></h2>
+        <% end %>
+                 
+   <div class="form-group">
+   <div class="input-group">
+	 <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+        <%= form_tag login_path do %>  
+
+        <h3 id="username">Username: <%= text_field_tag(:username)%></h3>
+</div>
+</div>
+<div class="form-group">
+		<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-key"> </i></span>
+        <h3 id="password">Password: <%= password_field_tag(:password) %></h3>
+  </div>
+  </div>
+       <div class="btn btn-success btn-block"> <%= submit_tag "Log In" %> </div>
+        <% end %>
+
+       <div class="forgot"> <%= link_to "Sign Up", new_user_path  %></div> 
+
+</section></div>
+    </body>
+    </html>
+
+<!--
+<div>
 <h1>Welcome to Cabbage</h1>
 
 <% if flash[:message] %>
     <h2><%= flash[:message] %></h2>
 <% end %>
+
 
 <%= form_tag login_path do %>                      
     <h3>Username: <%= text_field_tag(:username) %></h3>
@@ -27,4 +72,9 @@
 <h4>or</h4><br />
 
 <%= link_to("Sign Up", new_user_path) %></h3>  
-</div>
+-->
+
+
+    
+
+        

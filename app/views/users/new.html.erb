@@ -1,18 +1,38 @@
+
 <h1>Sign Up for Cabbage 🥬</h1><br />
 
-<%= form_for @user do |f| %> 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %><br />
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+    <div class="col-md-4 col-md-offset-4" id="login">
+    <section id="inner-wrapper" class="login">
+        <div class="form-group">
+        <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+
+    <%= form_for @user do |f| %> 
+    <div id="firstname"> <%= f.label :first_name %> </div>
+    <span class="text-field"><%= f.text_field :first_name %></span> <br />
     
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %><br />
+    <div id="lastname"> <%= f.label :last_name %></span> </div>
+    <span class="text-field"><%= f.text_field :last_name %> <br />
 
-    <%= f.label :username %>
-    <%= f.text_field :username %><br />
+    <div id="username"> <%= f.label :username %> </div>
+    <span class="text-field"><%= f.text_field :username %> </span><br />
 
-    <%= f.label :password %>
-    <%= f.password_field :password %><br />
-
-    <%= f.submit "Submit" %>
+    <div id="password">  <%= f.label :password %> </div>
+    <span class="text-field"><span class="text-field"><%= f.password_field :password %></span>  <br />
+    <br>
+    <div class="btn btn-success btn-block"><%= f.submit "Done"  %> </div>
     
-<% end %>
+    <% end %>
+</div>
+</div>
+</section></div>
+</body>
+
+</html>
