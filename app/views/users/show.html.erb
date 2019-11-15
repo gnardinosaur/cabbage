@@ -4,7 +4,7 @@
 <h3>Available Cash to Invest: <%= number_to_currency(@logged_in_user.balance) %></h3>
 <h3>Invested in All Portfolios: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h3>
 <h3>Total Balance: <%= number_to_currency(@logged_in_user.balance + @logged_in_user.all_portfolios_balance) %></h3>
-<hr>
+
 
 <!-- these buttons inc/decrement @user.balance attribute -->
 <%= form_tag user_path, method: "patch" do %>
@@ -19,21 +19,29 @@
 <hr>
 
 <div class="portfolio-parent">
-    <h3>Portfolios:</h3>
-    <h2>Ca$h Invested: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h2>
-    
-    <div class="portfolios-list">
-        <% @logged_in_user.portfolios.each do |portfolio| %>
-            <div class="each-portfolio"> 
-                <div>Portfolio: <%= link_to portfolio.title, portfolio_path(portfolio) %></div> <div><%= number_to_currency(portfolio.portfolio_balance) %></div>
-            </div>
-        <% end %>
+<div class="row">
+    <div class="col-sm">
+        <h2>Portfolios</h2>
     </div>
-    
-    <%= link_to("Create A New Portfolio", new_portfolio_path) %> <!-- need to css style as a button -->
+    <div class="col-sm">
+      <h3>Ca$h Invested: <%= number_to_currency(@logged_in_user.all_portfolios_balance) %></h3>
+    </div>
+    <div class="col-sm">
+        <%= link_to("Create A New Portfolio", new_portfolio_path, id: "create-btn") %> <!-- need to css style as a button -->
+    </div>
 </div>
 
-<div class="sign-out-btn">
-    <%= button_to("Log Out", root_path, method: "delete", class: "btn btn-secondary") %>
+<div class="portfolios-list">
+    <% @logged_in_user.portfolios.each do |portfolio| %>
+        <div class="each-portfolio"> 
+                <div><%= link_to portfolio.title, portfolio_path(portfolio), id: "port-link" %></div> <div class="port-price"><%= number_to_currency(portfolio.portfolio_balance) %></div>
+        </div>
+    <% end %>
 </div>
+    
+    <div class="sign-out-btn">
+        <%= button_to("Log Out", root_path, method: "delete", class: "btn btn-secondary") %>
+    </div>
 </div>
+
+
